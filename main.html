@@ -4,9 +4,26 @@
 		<title>Infinite Mario - JavaScript</title>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 				<script type='text/javascript' src='http://www.midijs.net/lib/midi.js'></script>
+
+		<!-- Code for centering the canvas -->
+		<style type="text/css">
+			canvas {
+			    padding: 0;
+			    margin: auto;
+			    display: block;
+			    /*TODO:Confirm height and width values*/
+			    width: 800px;
+			    height: 600px;
+			    position: absolute;
+			    top: 0;
+			    bottom: 0;
+			    left: 0;
+			    right: 0;
+			}
+		</style>
 	</head>
 	<body>
-		<canvas id="canvas" width="640" height="480">
+		<canvas id="canvas">
 			<p>Your browser does not support the canvas element.</p>
 		</canvas>
 
