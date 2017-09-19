@@ -23,7 +23,7 @@ Mario.Character = function() {
     this.JumpTime = 0;
     this.XJumpSpeed = 0;
     this.YJumpSpeed = 0;
-    this.CanShoot = false;
+    this.CanShoot = true;
     
     this.Width = 4;
     this.Height = 24;
@@ -246,8 +246,9 @@ Mario.Character.prototype.Move = function() {
         this.Sliding = false;  
     }
     
-    if (Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.A) && this.CanShoot && this.Fire && this.World.FireballsOnScreen < 2) {
+    if (Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.A) && this.CanShoot && this.Coins>0 ) {
         Enjine.Resources.PlaySound("fireball");
+        this.Coins--;
         this.World.AddSprite(new Mario.Fireball(this.World, this.X + this.Facing * 6, this.Y - 20, this.Facing));
     }
     
@@ -617,6 +618,50 @@ Mario.Character.prototype.GetFlower = function() {
 };
 
 Mario.Character.prototype.GetMushroom = function() {
+   if(!this.World.paused) {
+       this.PowerUpTime = 2;
+       this.World.paused = true;
+       $.confirm({
+           title: 'Prompt!',
+           theme: 'supervan',
+           columnClass: 'col-md-4 col-md-offset-4',
+           useBootstrap: true,
+           content: '' +
+           '<form action="" class="formName">' +
+           '<div class="form-group">' +
+           '<label>Enter something here</label>' +
+           '<input type="text" placeholder="Your name" class="name form-control" required />' +
+           '</div>' +
+           '</form>',
+           buttons: {
+               formSubmit: {
+                   text: 'Submit',
+                   btnClass: 'btn-blue',
+                   action: function () {
+                       var name = this.$content.find('.name').val();
+                       if(!name){
+                           $.alert('provide a valid name');
+                           return false;
+                       }
+                       $.alert('Your name is ' + name);
+                   }
+               },
+               cancel: function () {
+                   //close
+               },
+           },
+           onContentReady: function () {
+               // bind to events
+               var jc = this;
+               this.$content.find('form').on('submit', function (e) {
+                   // if the user submits the form by pressing enter in the field.
+                   e.preventDefault();
+                   jc.$$formSubmit.trigger('click'); // reference the button and click it
+               });
+           }
+       });
+   }
+
     if (this.DeathTime > 0 && this.World.Paused) {
         return;
     }
