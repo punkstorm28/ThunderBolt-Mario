@@ -1,26 +1,26 @@
 $(document).ready(function(){
     var token_;
-    var working = false;
+    // var working = false; going to be used for animation.
     $('.login').on('submit', function(e) {
-    e.preventDefault();
-    var username = $('#username').val();
-    var password = $('#password').val();
-    console.log(username);
-    if( username == '' || password == ''){
-      alert("Please fill all fields!!");
-    }
+        e.preventDefault();
+        var username = $('#username').val();
+        var password = $('#password').val();
+        console.log(username);
+        if( username == '' || password == ''){
+          alert("Please fill all fields!!");
+      }
 
 
     /*--->This will post a JSON object to the URL.
-    --->If the post is successful a JSON object data
+    --->If the post is successful a JSON object "data"
     will be returned by the backend.
     --->data will contain a key : authenticated that will be set to true
     if the username and password are authenticated.
     --->data will also contain a key called access_token that holds
     the token.
-        */
+    */
 
-        
+
     else{
       $.post("#", //TODO : Add URL
         {username : username,password : password},
@@ -30,19 +30,29 @@ $(document).ready(function(){
             if(authenticated){
                 var key = obj.access_token;
                 token_ = key; //Get the token and save it in token_
+                //Code for practice and select mode buttons.
+                $('.wrapper').hide('slow');
+                $('.button1').show(); 
+                $('.button2').show(); 
 
-                window.location = "#"; //TODO : Add URL
+                $('.button1').click(function(){
+                    //Add functionality
+                });
+                $('.button2').click(function(){
+                    //Add functionality
+                });
+                
 
             }
             else{
                 alert("Invalid Username or Password");
 
             }
-         
+
 
 
         })
-    /*Animation stuff that I need to Integrate with the code later*/
+      /*Animation stuff that I need to Integrate with the code later*/
 
 
     //   if (working) return;
@@ -61,7 +71,7 @@ $(document).ready(function(){
     //   }, 4000);
     // }, 3000);
 
-    }
-    
-  });
+}
+
+});
 });
