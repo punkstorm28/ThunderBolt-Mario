@@ -16,16 +16,20 @@ function getQuestion(){
 	showQuestion();
 }
 
-function showQuestion(){
+function checkAnswer(data){ 
+  //TODO
+}
+
+function showQuestion(){ //TODO This function should take data from get request as parameter.
 	       $.confirm({
-           title: 'Prompt!',
+           title: 'Bonus Question!',
            theme: 'supervan',
-           columnClass: 'col-md-4 col-md-offset-4',
+           columnClass: 'col-md-12',
            useBootstrap: true,
            content: '' +
            '<form action="" class="formName">' +
            '<div class="form-group">' +
-           '<label>Answer</label>' +
+           '<label>Place holder for Question</label>' + //TODO Question must go here.
            '<input type="text" placeholder="Enter Option Number" class="name form-control" required />' +
            '</div>' +
            '</form>',
@@ -37,10 +41,10 @@ function showQuestion(){
                    		//TODO:I need to check the answer here and handle it.
                        var name = this.$content.find('.name').val();
                        if(!name){
-                           $.alert('provide a valid name');
+                           $.alert('provide a valid name'); //TODO Option validation
                            return false;
                        }
-                       $.alert('Your name is ' + name);
+                       $.alert('Your name is ' + name); //TODO Change this
                    }
                },
                // cancel: function () {
