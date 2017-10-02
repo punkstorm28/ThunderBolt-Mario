@@ -48,8 +48,10 @@ $(document).ready(function () {
                 $this.addClass('ok');
                 $state.html('Welcome back!');
                 setTimeout(function () {
-                    $state.html('Log in');
                     $this.removeClass('ok loading');
+                    $('.wrapper').hide('slow');
+                    $('.button1').show(); 
+                    $('.button2').show(); 
                     working = false;
                 }, 4000);
             }, 3000);
