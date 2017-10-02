@@ -28,9 +28,9 @@ $(document).ready(function () {
                 "url": "http://www.campusherald.in/backend/login.php",
                 "method": "POST",
                 "processData": false,
-                "data": "{\n \"username\" :\"VyomBro\",\n \"passcode\" :\"apples\"\n}"
+                "data": "{\n \"username\" :\"${username}\",\n \"passcode\" :\"$(password)\"\n}"
             }
-            
+
 
             $.ajax(settings).done(function (response) {
                 console.log(response);
