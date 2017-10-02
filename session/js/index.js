@@ -28,7 +28,7 @@ $(document).ready(function () {
                 "url": "http://www.campusherald.in/backend/login.php",
                 "method": "POST",
                 "processData": false,
-                "data": "{\n \"username\" :\"${username}\",\n \"passcode\" :\"$(password)\"\n}"
+                "data": "{ \"username\" : \""+username+"\",\n \"passcode\" :\""+password +"\"}"
             }
 
 
