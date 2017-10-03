@@ -34,6 +34,11 @@ $(document).ready(function () {
 
             $.ajax(settings).done(function (response) {
                 console.log(response);
+                var obj = JSON.parse(response);
+                usernameToken = obj.username;
+                token = obj[0].token;
+                console.log(token);
+
             });
             /*Animation stuff that I need to Integrate with the code later*/
 
@@ -45,16 +50,20 @@ $(document).ready(function () {
             $this.addClass('loading');
             $state.html('Authenticating');
             setTimeout(function () {
-                $this.addClass('ok');
-                $state.html('Welcome back!');
-                setTimeout(function () {
-                    $this.removeClass('ok loading');
-                    $('.wrapper').hide('slow');
-                    $('.button1').show(); 
-                    $('.button2').show(); 
-                    working = false;
-                }, 4000);
+                if(token!=undefined) {
+                    $this.addClass('ok');
+                    $state.html('Welcome back!');
+                    setTimeout(function () {
+                        $this.removeClass('ok loading');
+                        $('.wrapper').hide('slow');
+                        $('.button1').show();
+                        $('.button2').show();
+                        working = false;
+
+                    }, 4000);
+                }
             }, 3000);
+
 
         }
 
