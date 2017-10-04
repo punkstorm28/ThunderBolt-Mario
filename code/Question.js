@@ -1,28 +1,36 @@
-var isCompetitive = true;
 
-//This will be used when i have a fucking server.
-// function getQuestion(){
-// 	$.get('#',
-// 		function(data){
-// 			showQuestion(data);
-// 			checkAnswer(data);
 
-// 		});
-// }
 
-//For testing purposes.
+function fetchQuestion() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://www.campusherald.in/backend/randomQuestion.php",
+        "method": "GET",
+        "processData": false,
+    }
+
+    $.ajax(settings).done(function (response) {
+        showQuestion(response);
+    });
+}
 
 function getQuestion(){
-	showQuestion();
+    if(isCompetitive) {
+        fetchQuestion();
+    }
 }
 
 function checkAnswer(data){ 
   //TODO
+
+    Coins = Coins + 50;
+
 }
 
-function showQuestion(){ //TODO This function should take data from get request as parameter.
+function showQuestion(question){ //TODO This function should take data from get request as parameter.
 	       $.confirm({
-           title: 'Bonus Question!',
+           title: question,
            theme: 'supervan',
            columnClass: 'col-md-12',
            useBootstrap: true,
@@ -47,9 +55,14 @@ function showQuestion(){ //TODO This function should take data from get request 
                        $.alert('Your name is ' + name); //TODO Change this
                    }
                },
-               // cancel: function () {
-               //     //close
-               // },
+                cancel: function () {
+                    setTimeout(function () {
+                        setTimeout(function () {
+
+                        }, 4000);
+                        $(this).remove();
+                    },2000);
+                },
            },
            onContentReady: function () {
                // bind to events
@@ -59,6 +72,8 @@ function showQuestion(){ //TODO This function should take data from get request 
                    e.preventDefault();
                    jc.$$formSubmit.trigger('click'); // reference the button and click it
                });
+
            }
        });
+
 }

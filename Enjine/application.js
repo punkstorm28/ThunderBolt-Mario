@@ -3,10 +3,17 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.Application = function() {
+var isCompetitive = false;
+var tokenVar = "";
+
+
+Enjine.Application = function(competitive, token) {
     this.canvas = null;
     this.timer = null;
     this.stateContext = null;
+    console.log(competitive);
+    isCompetitive = competitive;
+    tokenVar = token;
 };
 
 Enjine.Application.prototype = {

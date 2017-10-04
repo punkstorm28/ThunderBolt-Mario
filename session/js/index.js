@@ -21,6 +21,7 @@ $(document).ready(function () {
          */
 
 
+
         else {
             var settings = {
                 "async": true,
@@ -36,13 +37,14 @@ $(document).ready(function () {
                 console.log(response);
                 var obj = JSON.parse(response);
                 usernameToken = obj.username;
-                token = obj[0].token;
+                token_ = obj[0].token;
                 console.log(token);
 
             });
+
+
+
             /*Animation stuff that I need to Integrate with the code later*/
-
-
             if (working) return;
             working = true;
             var $this = $(this),
@@ -50,7 +52,7 @@ $(document).ready(function () {
             $this.addClass('loading');
             $state.html('Authenticating');
             setTimeout(function () {
-                if(token!=undefined) {
+                if(token_!=undefined) {
                     $this.addClass('ok');
                     $state.html('Welcome back!');
                     setTimeout(function () {
@@ -58,13 +60,13 @@ $(document).ready(function () {
                         $('.wrapper').hide('slow');
                         $('.button1').show();
                         $('.button2').show();
+                        document.getElementById("competitive").href="http://campusherald.in/main.html?competitive=true&token="+token_;
+
                         working = false;
 
                     }, 4000);
                 }
             }, 3000);
-
-
         }
 
     });
