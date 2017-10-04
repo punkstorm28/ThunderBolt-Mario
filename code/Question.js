@@ -59,14 +59,16 @@ function showQuestion(question, ans){ //TODO This function should take data from
                    text: 'Submit',
                    btnClass: 'btn-blue',
                    action: function () {
-                   		//TODO:I need to check the answer here and handle it.
                        var answer = this.$content.find('.name').val();
                        // if(!name){
                        //     $.alert('provide a valid name'); //TODO Option validation
-                       //     return false;
+                       //     return false; 
                        // }
                        // $.alert('Your name is ' + name); //TODO Change this
-                       if(answer == ans){
+                       if(answer!='1' || answer!='2' || answer!='3' || answer!='4'){
+                        $.alert('Enter a valid answer!');
+                       }
+                       else if(answer == ans){
                         $.alert('Awesome,Right Answer!!');
                         rightAnswer();
                        }
