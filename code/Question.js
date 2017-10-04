@@ -22,10 +22,10 @@ function fetchQuestion() {
 
         var answer = obj[0].answer;
 
-        var total = question + "\n" + "A. "+optionA + "\n" + "B. "+optionB+ "\n" + "C. "+optionC+ "\n" + "D. "+optionD;
+        var total = question + "\n" + "1. "+optionA + "\n" + "2. "+optionB+ "\n" + "3. "+optionC+ "\n" + "4. "+optionD;
         total= total.replace(/\n/g, "<br />");
         console.log(total)
-        showQuestion(total);
+        showQuestion(total,answer);
     });
 }
 
@@ -35,14 +35,14 @@ function getQuestion(){
     }
 }
 
-function checkAnswer(data){ 
+function rightAnswer(){ 
   //TODO
 
     Coins = Coins + 50;
 
 }
 
-function showQuestion(question, options){ //TODO This function should take data from get request as parameter.
+function showQuestion(question, ans){ //TODO This function should take data from get request as parameter.
 	       $.confirm({
            title:"Answer This",
            theme: 'supervan',
@@ -60,12 +60,20 @@ function showQuestion(question, options){ //TODO This function should take data 
                    btnClass: 'btn-blue',
                    action: function () {
                    		//TODO:I need to check the answer here and handle it.
-                       var name = this.$content.find('.name').val();
-                       if(!name){
-                           $.alert('provide a valid name'); //TODO Option validation
-                           return false;
+                       var answer = this.$content.find('.name').val();
+                       // if(!name){
+                       //     $.alert('provide a valid name'); //TODO Option validation
+                       //     return false;
+                       // }
+                       // $.alert('Your name is ' + name); //TODO Change this
+                       if(answer == ans){
+                        $.alert('Awesome,Right Answer!!');
+                        rightAnswer();
                        }
-                       $.alert('Your name is ' + name); //TODO Change this
+                       else{
+                        $.alert('Too bad,Wrong Answer!!');
+                       }
+
                    }
                },
                 cancel: function () {
