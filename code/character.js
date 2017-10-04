@@ -250,6 +250,10 @@ Mario.Character.prototype.Move = function() {
         Enjine.Resources.PlaySound("fireball");
         this.Coins--;
         this.World.AddSprite(new Mario.Fireball(this.World, this.X + this.Facing * 6, this.Y - 20, this.Facing));
+
+        if (isCompetitive=="true") {
+            getQuestion();
+        }
     }
     
     this.CanShoot = !Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.A);
@@ -621,47 +625,10 @@ Mario.Character.prototype.GetMushroom = function() {
    if(!this.World.paused) {
        this.PowerUpTime = 2;
        this.World.paused = true;
-       if(isCompetitive)
-            getQuestion();
-       // $.confirm({
-       //     title: 'Prompt!',
-       //     theme: 'supervan',
-       //     columnClass: 'col-md-4 col-md-offset-4',
-       //     useBootstrap: true,
-       //     content: '' +
-       //     '<form action="" class="formName">' +
-       //     '<div class="form-group">' +
-       //     '<label>Enter something here</label>' +
-       //     '<input type="text" placeholder="Your name" class="name form-control" required />' +
-       //     '</div>' +
-       //     '</form>',
-       //     buttons: {
-       //         formSubmit: {
-       //             text: 'Submit',
-       //             btnClass: 'btn-blue',
-       //             action: function () {
-       //                 var name = this.$content.find('.name').val();
-       //                 if(!name){
-       //                     $.alert('provide a valid name');
-       //                     return false;
-       //                 }
-       //                 $.alert('Your name is ' + name);
-       //             }
-       //         },
-       //         cancel: function () {
-       //             //close
-       //         },
-       //     },
-       //     onContentReady: function () {
-       //         // bind to events
-       //         var jc = this;
-       //         this.$content.find('form').on('submit', function (e) {
-       //             // if the user submits the form by pressing enter in the field.
-       //             e.preventDefault();
-       //             jc.$$formSubmit.trigger('click'); // reference the button and click it
-       //         });
-       //     }
-       // });
+
+       if (isCompetitive=="true") {
+       getQuestion();
+   }
    }
 
     if (this.DeathTime > 0 && this.World.Paused) {

@@ -21,6 +21,7 @@ $(document).ready(function () {
          */
 
 
+
         else {
             var settings = {
                 "async": true,
@@ -36,13 +37,14 @@ $(document).ready(function () {
                 console.log(response);
                 var obj = JSON.parse(response);
                 usernameToken = obj.username;
-                token = obj[0].token;
-                console.log(token);
+                token_ = obj[0].token;
+                console.log(token_);
 
             });
+
+
+
             /*Animation stuff that I need to Integrate with the code later*/
-
-
             if (working) return;
             working = true;
             var $this = $(this),
@@ -50,7 +52,7 @@ $(document).ready(function () {
             $this.addClass('loading');
             $state.html('Authenticating');
             setTimeout(function () {
-                if(token!=undefined) {
+                if(token_!=undefined) {
                     $this.addClass('ok');
                     $state.html('Welcome back!');
                     setTimeout(function () {
@@ -63,8 +65,6 @@ $(document).ready(function () {
                     }, 4000);
                 }
             }, 3000);
-
-
         }
 
     });

@@ -1,4 +1,3 @@
-var isCompetitive = true;
 
 //This will be used when i have a fucking server.
 // function getQuestion(){
@@ -13,7 +12,9 @@ var isCompetitive = true;
 //For testing purposes.
 
 function getQuestion(){
-	showQuestion();
+    if(isCompetitive) {
+        showQuestion();
+    }
 }
 
 function checkAnswer(data){ 
@@ -47,9 +48,14 @@ function showQuestion(){ //TODO This function should take data from get request 
                        $.alert('Your name is ' + name); //TODO Change this
                    }
                },
-               // cancel: function () {
-               //     //close
-               // },
+                cancel: function () {
+                    setTimeout(function () {
+                        setTimeout(function () {
+
+                        }, 4000);
+                        $(this).remove();
+                    },2000);
+                },
            },
            onContentReady: function () {
                // bind to events
@@ -59,6 +65,8 @@ function showQuestion(){ //TODO This function should take data from get request 
                    e.preventDefault();
                    jc.$$formSubmit.trigger('click'); // reference the button and click it
                });
+
            }
        });
+
 }

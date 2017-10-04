@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
       <title>Thunderbolt Mario</title>
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
       <script type='text/javascript' src='http://www.midijs.net/lib/midi.js'></script>
@@ -87,6 +88,24 @@
      <link rel="stylesheet" href="node_modules/jquery-confirm/css/jquery-confirm.css">
      <script src="node_modules/jquery-confirm/js/jquery-confirm.js"></script>
      <script   src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
-     <script>$(document).ready(function() { new Enjine.Application().Initialize(new Mario.LoadingState(), 320, 240) });</script>
+     <script>
+
+         function findGetParameter(parameterName) {
+             var result = null,
+                 tmp = [];
+             var items = location.search.substr(1).split("&");
+             for (var index = 0; index < items.length; index++) {
+                 tmp = items[index].split("=");
+                 if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+             }
+             return result;
+         }
+
+         $(document).ready(function()
+         {
+             console.log("test" + findGetParameter("competitive"))
+             new Enjine.Application(findGetParameter("competitive"),findGetParameter("token")).Initialize(new Mario.LoadingState(), 320, 240)
+         });
+     </script>
 </body>
 </html>
