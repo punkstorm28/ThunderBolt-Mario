@@ -10,7 +10,6 @@ function updateScore(token, score) {
         "processData": false,
         "data": "{\n \"token\" :"+token+",\n \"score\" :"+score+"\n}"
     }
-    console.log(settings);
 
 
     $.ajax(settings).done(function (response) {
