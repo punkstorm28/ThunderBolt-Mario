@@ -38,7 +38,7 @@ $(document).ready(function () {
                 var obj = JSON.parse(response);
                 usernameToken = obj.username;
                 token_ = obj[0].token;
-                console.log(token_);
+                console.log(token);
 
             });
 
@@ -60,6 +60,8 @@ $(document).ready(function () {
                         $('.wrapper').hide('slow');
                         $('.button1').show();
                         $('.button2').show();
+                        document.getElementById("competitive").href="http://campusherald.in/main.html?competitive=true&token="+token_;
+
                         working = false;
 
                     }, 4000);

@@ -1,15 +1,20 @@
 
-//This will be used when i have a fucking server.
-// function getQuestion(){
-// 	$.get('#',
-// 		function(data){
-// 			showQuestion(data);
-// 			checkAnswer(data);
 
-// 		});
-// }
 
-//For testing purposes.
+function fetchQuestion() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://www.campusherald.in/backend/randomQuestion.php",
+        "method": "GET",
+        "processData": false,
+    }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+
+    });
+}
 
 function getQuestion(){
     if(isCompetitive) {
@@ -19,6 +24,9 @@ function getQuestion(){
 
 function checkAnswer(data){ 
   //TODO
+
+    Coins = Coins + 50;
+
 }
 
 function showQuestion(){ //TODO This function should take data from get request as parameter.
