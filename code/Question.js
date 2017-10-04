@@ -11,7 +11,17 @@ function fetchQuestion() {
     }
 
     $.ajax(settings).done(function (response) {
-        showQuestion(response);
+        console.log(response);
+        var obj = JSON.parse(response);
+
+        var question = obj[0].question;
+        var optionA = obj[0].optionA;
+        var optionB = obj[0].optionB;
+        var optionC = obj[0].optionC;
+        var optionD = obj[0].optionD;
+
+        var total = question + "\n" + "A. "+optionA + "\n" + "B. "+optionB+ "\n" + "C. "+optionC+ "\n" + "D. "+optionD;
+        showQuestion(total);
     });
 }
 
@@ -28,7 +38,7 @@ function checkAnswer(data){
 
 }
 
-function showQuestion(question){ //TODO This function should take data from get request as parameter.
+function showQuestion(question, options){ //TODO This function should take data from get request as parameter.
 	       $.confirm({
            title: question,
            theme: 'supervan',
@@ -37,7 +47,6 @@ function showQuestion(question){ //TODO This function should take data from get 
            content: '' +
            '<form action="" class="formName">' +
            '<div class="form-group">' +
-           '<label>Place holder for Question</label>' + //TODO Question must go here.
            '<input type="text" placeholder="Enter Option Number" class="name form-control" required />' +
            '</div>' +
            '</form>',

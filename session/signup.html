@@ -104,31 +104,31 @@
 }
 });
 
-      // .on('success.form.bv', function(e) {
-      //       $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-      //       $('#contact_form').data('bootstrapValidator').resetForm();
+       .on('success.form.bv', function(e) {
+             $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+            $('#contact_form').data('bootstrapValidator').resetForm();
 
-      //       // Prevent form submission
-      //       e.preventDefault();
+            // Prevent form submission
+            e.preventDefault();
 
-      //       // Get the form instance
-      //       var $form = $(e.target);
+            // Get the form instance
+            var $form = $(e.target);
 
-      //       // Get the BootstrapValidator instance
-      //       var bv = $form.data('bootstrapValidator');
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
 
-      //       // Use Ajax to submit form data
-      //       $.post($form.attr('action'), $form.serialize(), function(result) {
-      //         console.log(result);
-      //       }, 'json');
-      //     });
+             // Use Ajax to submit form data
+             $.post($form.attr('action'), $form.serialize(), function(result) {
+               console.log(result);
+             }, 'json');
+           });
     });
   </script>
 </head>
 <body>
   <div class="container">
 
-    <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+    <form class="well form-horizontal" action="http://www.campusherald.in/backend/register.php" method="post"  id="contact_form">
       <fieldset>
 
         <!-- Form Name -->
@@ -258,8 +258,7 @@
         <!-- Button -->
         <div class="form-group">
           <label class="col-md-4 control-label"></label>
-          <div class="col-md-4"><br>
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+          <div class="col-md-4"><br><button type="submit" class="btn btn-warning" >SUBMIT <span class="glyphicon glyphicon-send"></span></button>
           </div>
         </div>
 
