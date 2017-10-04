@@ -1,7 +1,8 @@
 /**
 	Global representation of the mario character.
-	Code by Rob Kleffner, 2011
+
 */
+
 
 Mario.Character = function() {
     //these are static in Notch's code... here it doesn't seem necessary
@@ -667,7 +668,6 @@ Mario.Character.prototype.Get1Up = function() {
 
 Mario.Character.prototype.GetCoin = function() {
     this.Coins++;
-
     updateScore(tokenVar, this.Coins);
 /*
     if (this.Coins === 100) {

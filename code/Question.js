@@ -35,11 +35,9 @@ function getQuestion(){
     }
 }
 
-function rightAnswer(){ 
-  //TODO
-
-    Coins = Coins + 50;
-
+function rightAnswer(){
+    Mario.MarioCharacter.Coins = Mario.MarioCharacter.Coins + 50;
+    updateScore(tokenVar, Mario.MarioCharacter.Coins);
 }
 
 function showQuestion(question, ans){ //TODO This function should take data from get request as parameter.
@@ -61,17 +59,13 @@ function showQuestion(question, ans){ //TODO This function should take data from
                    action: function () {
                    		//TODO:I need to check the answer here and handle it.
                        var answer = this.$content.find('.name').val();
-                       // if(!name){
-                       //     $.alert('provide a valid name'); //TODO Option validation
-                       //     return false;
-                       // }
-                       // $.alert('Your name is ' + name); //TODO Change this
                        if(answer == ans){
                         $.alert('Awesome,Right Answer!!');
-                        rightAnswer();
-                       }
-                       else{
+                           rightAnswer();
+                           $(this).remove();
+                       } else{
                         $.alert('Too bad,Wrong Answer!!');
+                           $(this).remove();
                        }
 
                    }
