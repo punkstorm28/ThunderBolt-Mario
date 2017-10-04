@@ -251,9 +251,6 @@ Mario.Character.prototype.Move = function() {
         this.Coins--;
         this.World.AddSprite(new Mario.Fireball(this.World, this.X + this.Facing * 6, this.Y - 20, this.Facing));
 
-        if (isCompetitive=="true") {
-            getQuestion();
-        }
     }
     
     this.CanShoot = !Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.A);
