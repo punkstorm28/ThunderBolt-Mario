@@ -20,6 +20,8 @@ function fetchQuestion() {
         var optionC = obj[0].optionC;
         var optionD = obj[0].optionD;
 
+        var answer = obj[0].answer;
+
         var total = question + "\n" + "A. "+optionA + "\n" + "B. "+optionB+ "\n" + "C. "+optionC+ "\n" + "D. "+optionD;
         total= total.replace(/\n/g, "<br />");
         console.log(total)
