@@ -21,6 +21,8 @@ function fetchQuestion() {
         var optionD = obj[0].optionD;
 
         var total = question + "\n" + "A. "+optionA + "\n" + "B. "+optionB+ "\n" + "C. "+optionC+ "\n" + "D. "+optionD;
+        total= total.replace(/\n/g, "<br />");
+        console.log(total)
         showQuestion(total);
     });
 }
@@ -40,11 +42,11 @@ function checkAnswer(data){
 
 function showQuestion(question, options){ //TODO This function should take data from get request as parameter.
 	       $.confirm({
-           title: question,
+           title:"Answer This",
            theme: 'supervan',
            columnClass: 'col-md-12',
            useBootstrap: true,
-           content: '' +
+           content: question +
            '<form action="" class="formName">' +
            '<div class="form-group">' +
            '<input type="text" placeholder="Enter Option Number" class="name form-control" required />' +
