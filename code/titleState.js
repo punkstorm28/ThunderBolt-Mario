@@ -30,8 +30,11 @@ Mario.TitleState.prototype.Enter = function() {
     this.logo.Image = Enjine.Resources.Images["logo"];
     this.logo.X = 0, this.logo.Y = 0;
 
-    this.font = Mario.SpriteCuts.CreateRedFont();
-    this.font.Strings[0] = { String: "Press S to Start", X: 96, Y: 120 };
+    this.font = Mario.SpriteCuts.CreateWhiteFont();
+    this.font.Strings[0] = { String: "Press S to Start", X: 96, Y: 105 };
+    this.font.Strings[1] = { String: "S to jump", X: 96, Y: 115 };
+    this.font.Strings[2] = { String: "A to shoot", X: 96, Y: 125 };
+
 
     this.logoY = 20;
 

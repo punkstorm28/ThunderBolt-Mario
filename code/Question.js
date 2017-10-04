@@ -11,14 +11,13 @@ function fetchQuestion() {
     }
 
     $.ajax(settings).done(function (response) {
-        console.log(response);
-
+        showQuestion(response);
     });
 }
 
 function getQuestion(){
     if(isCompetitive) {
-        showQuestion();
+        fetchQuestion();
     }
 }
 
@@ -29,9 +28,9 @@ function checkAnswer(data){
 
 }
 
-function showQuestion(){ //TODO This function should take data from get request as parameter.
+function showQuestion(question){ //TODO This function should take data from get request as parameter.
 	       $.confirm({
-           title: 'Bonus Question!',
+           title: question,
            theme: 'supervan',
            columnClass: 'col-md-12',
            useBootstrap: true,
