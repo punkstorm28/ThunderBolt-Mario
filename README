@@ -1,7 +1,4 @@
-This is a clone of Infinite Mario, written in JavaScript for web browsers using HTML5.
+This is the version of Infinite Mario that was used in Tech Tatva 2017 in the ThunderBolt Mario Electrific event.
 
-A good demonstration of what can be accomplished with the Canvas and Audio elements.
+Ported by RobertKleffner from the Java version by Notch (Markus Persson).
 
-Background music currently does not work in any browser besides Firefox 4. I think. There were too many problems with other browsers.
-
-Ported from the Java version by Notch (Markus Persson).
